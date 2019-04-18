@@ -1,4 +1,4 @@
-# MulbotFramework
+# MulbotFirmware
 
 This is firmware based on marlin for my [[Mulbot](https://www.thingiverse.com/thing:3432384)]
 
