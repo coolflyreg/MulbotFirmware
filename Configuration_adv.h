@@ -1290,11 +1290,17 @@
 //  #define USER_DESC_5 "Home & Info"
 //  #define USER_GCODE_5 "G28\nM503"
 
-  #define USER_DESC_1 "Open LED"
+  #define USER_DESC_1 "Open LED 100%"
   #define USER_GCODE_1 "M42 P45 S255"
   
-  #define USER_DESC_2 "Close LED"
-  #define USER_GCODE_2 "M42 P45 S0"
+  #define USER_DESC_2 "Open LED 75%"
+  #define USER_GCODE_2 "M42 P45 S192"
+  
+  #define USER_DESC_3 "Open LED 50%"
+  #define USER_GCODE_3 "M42 P45 S128"
+  
+  #define USER_DESC_4 "Close LED"
+  #define USER_GCODE_4 "M42 P45 S0"
 #endif
 
 /**
