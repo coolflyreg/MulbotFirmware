@@ -64,7 +64,7 @@
 // Servos
 //
 #ifdef IS_RAMPS_13
-  #define SERVO0_PIN        7   // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
+  #define SERVO0_PIN        -1//7   // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
 #else
   #define SERVO0_PIN       11
 #endif
@@ -181,15 +181,19 @@
 #define HEATER_0_PIN       RAMPS_D10_PIN
 
 #if ENABLED(IS_RAMPS_EFB)                      // Hotend, Fan, Bed
+  #define FAN_PIN          RAMPS_D9_PIN
   #define HEATER_BED_PIN   RAMPS_D8_PIN
 #elif ENABLED(IS_RAMPS_EEF)                    // Hotend, Hotend, Fan
   #define HEATER_1_PIN     RAMPS_D9_PIN
+  #define FAN_PIN        RAMPS_D8_PIN
 #elif ENABLED(IS_RAMPS_EEB)                    // Hotend, Hotend, Bed
   #define HEATER_1_PIN     RAMPS_D9_PIN
   #define HEATER_BED_PIN   RAMPS_D8_PIN
 #elif ENABLED(IS_RAMPS_EFF)                    // Hotend, Fan, Fan
+  #define FAN_PIN        RAMPS_D9_PIN
   #define FAN1_PIN         RAMPS_D8_PIN
 #elif DISABLED(IS_RAMPS_SF)                    // Not Spindle, Fan (i.e., "EFBF" or "EFBE")
+  #define FAN_PIN        RAMPS_D9_PIN
   #define HEATER_BED_PIN   RAMPS_D8_PIN
   #if HOTENDS == 1
     #define FAN1_PIN       MOSFET_D_PIN
@@ -210,6 +214,9 @@
   #endif
 #endif
 
+#define FAN2_PIN          -1// 44
+#define V5_COOLING_PIN           44
+
 //
 // Misc. Functions
 //
@@ -220,7 +227,10 @@
   #define FILWIDTH_PIN      5   // Analog Input on AUX2
 #endif
 
+// define digital pin 4 for the filament runout sensor. Use the RAMPS 1.4 digital input 4 on the servos connector
+#define FIL_RUNOUT_PIN      19//43
 // RAMPS 1.4 DIO 4 on the servos connector
+
 #ifndef FIL_RUNOUT_PIN
   #define FIL_RUNOUT_PIN    4
 #endif
@@ -332,6 +342,10 @@
   #define E_MUX2_PIN 44   // E1_CS_PIN
 #endif
 
+#undef E_MUX0_PIN
+#undef E_MUX1_PIN
+#undef E_MUX2_PIN
+
 //////////////////////////
 // LCDs and Controllers //
 //////////////////////////
@@ -433,7 +447,7 @@
 
       #define BTN_ENC           35
       #define SD_DETECT_PIN     49
-      #define KILL_PIN          41
+      #define KILL_PIN          -1//41
 
       #if ENABLED(BQ_LCD_SMART_CONTROLLER)
         #define LCD_BACKLIGHT_PIN 39

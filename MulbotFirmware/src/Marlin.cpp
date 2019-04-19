@@ -208,6 +208,19 @@ millis_t max_inactive_time, // = 0
  * ******************************** FUNCTIONS ********************************
  * ***************************************************************************
  */
+void SetUpFAN2_PIN()
+{
+    SET_OUTPUT(V5_COOLING_PIN);
+    WRITE(V5_COOLING_PIN, LOW);
+}
+
+void Fan2Scan()
+{
+    if(thermalManager.degHotend(0)>65)
+        WRITE(V5_COOLING_PIN, HIGH);
+    else WRITE(V5_COOLING_PIN, LOW);
+}
+
 
 void setup_killpin() {
   #if HAS_KILL
@@ -654,6 +667,7 @@ void idle(
   #endif
 
   ui.update();
+  Fan2Scan();
 
   #if ENABLED(HOST_KEEPALIVE_FEATURE)
     gcode.host_keepalive();
@@ -925,6 +939,8 @@ void setup() {
   #if HAS_SERVOS
     servo_init();
   #endif
+    
+  SetUpFAN2_PIN();
 
   #if HAS_Z_SERVO_PROBE
     servo_probe_init();
