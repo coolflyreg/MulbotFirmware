@@ -36,6 +36,8 @@
 #define MSG_CONFIGURATION                   _UxGT("设置")
 
 #define WELCOME_MSG                         MACHINE_NAME _UxGT("已就绪.")  //" ready."
+// #define MSG_YES                             _UxGT("是"); // YES
+// #define MSG_NO                              _UxGT("否"); // NO
 #define MSG_BACK                            _UxGT("返回")         // ”Back“
 #define MSG_SD_INSERTED                     _UxGT("存储卡已插入")  //"Card inserted"
 #define MSG_SD_REMOVED                      _UxGT("存储卡被拔出")  //"Card removed"
