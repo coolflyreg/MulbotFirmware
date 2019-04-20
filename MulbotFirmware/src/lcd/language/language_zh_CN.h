@@ -36,11 +36,12 @@
 #define MSG_CONFIGURATION                   _UxGT("设置")
 
 #define WELCOME_MSG                         MACHINE_NAME _UxGT("已就绪.")  //" ready."
-// #define MSG_YES                             _UxGT("是"); // YES
-// #define MSG_NO                              _UxGT("否"); // NO
+#define MSG_YES                             _UxGT("是") // YES
+#define MSG_NO                              _UxGT("否") // NO
 #define MSG_BACK                            _UxGT("返回")         // ”Back“
 #define MSG_SD_INSERTED                     _UxGT("存储卡已插入")  //"Card inserted"
 #define MSG_SD_REMOVED                      _UxGT("存储卡被拔出")  //"Card removed"
+#define MSG_LCD_SOFT_ENDSTOPS               _UxGT("软挡块")
 #define MSG_LCD_ENDSTOPS                    _UxGT("挡块")  //"Endstops" // Max length 8 characters
 #define MSG_MAIN                            _UxGT("主菜单")  //"Main"
 #define MSG_AUTOSTART                       _UxGT("自动开始")  //"Autostart"
@@ -48,6 +49,7 @@
 #define MSG_DEBUG_MENU                      _UxGT("调试菜单")    // "Debug Menu"
 #define MSG_PROGRESS_BAR_TEST               _UxGT("进度条测试")  // "Progress Bar Test"
 #define MSG_AUTO_HOME                       _UxGT("回原点")  //"Auto home"
+#define MSG_AUTO_Z_ALIGN                    _UxGT("自动对齐Z")
 #define MSG_AUTO_HOME_X                     _UxGT("回X原位")  //"Home X"
 #define MSG_AUTO_HOME_Y                     _UxGT("回Y原位")  //"Home Y"
 #define MSG_AUTO_HOME_Z                     _UxGT("回Z原位")  //"Home Z"
@@ -62,16 +64,23 @@
 #define MSG_PREHEAT_1                       _UxGT("预热" PREHEAT_1_LABEL)  //"Preheat PREHEAT_2_LABEL"
 #define MSG_PREHEAT_1_N                     MSG_PREHEAT_1 _UxGT(" ")  //MSG_PREHEAT_1 " "
 #define MSG_PREHEAT_1_ALL                   MSG_PREHEAT_1 _UxGT(" 全部")  //MSG_PREHEAT_1 " All"
+#define MSG_PREHEAT_1_END                   MSG_PREHEAT_1 _UxGT(" 结束")
 #define MSG_PREHEAT_1_BEDONLY               MSG_PREHEAT_1 _UxGT(" 热床")  //MSG_PREHEAT_1 " Bed"
 #define MSG_PREHEAT_1_SETTINGS              MSG_PREHEAT_1 _UxGT(" 设置")  //MSG_PREHEAT_1 " conf"
 #define MSG_PREHEAT_2                       _UxGT("预热" PREHEAT_2_LABEL)  //"Preheat PREHEAT_2_LABEL"
 #define MSG_PREHEAT_2_N                     MSG_PREHEAT_2 _UxGT(" ")  //MSG_PREHEAT_2 " "
 #define MSG_PREHEAT_2_ALL                   MSG_PREHEAT_2 _UxGT(" 全部")  //MSG_PREHEAT_2 " All"
+#define MSG_PREHEAT_2_END                   MSG_PREHEAT_2 _UxGT(" 结束")
 #define MSG_PREHEAT_2_BEDONLY               MSG_PREHEAT_2 _UxGT(" 热床")  //MSG_PREHEAT_2 " Bed"
 #define MSG_PREHEAT_2_SETTINGS              MSG_PREHEAT_2 _UxGT(" 设置")  //MSG_PREHEAT_2 " conf"
 #define MSG_COOLDOWN                        _UxGT("降温")  //"Cooldown"
-#define MSG_SWITCH_PS_ON                    _UxGT("电源打开")  //"Switch power on"
-#define MSG_SWITCH_PS_OFF                   _UxGT("电源关闭")  //"Switch power off"
+#define MSG_LASER_MENU                      _UxGT("激光控制") // Laser Control
+#define MSG_LASER_OFF                       _UxGT("关闭激光") //Laser Off
+#define MSG_LASER_ON                        _UxGT("打开激光") //Laser On
+#define MSG_LASER_POWER                     _UxGT("激光功率") // Laser power
+#define MSG_SPINDLE_REVERSE                 _UxGT("反转主轴") // Spindle Reverse
+#define MSG_SWITCH_PS_ON                    _UxGT("打开电源")  //"Switch power on"
+#define MSG_SWITCH_PS_OFF                   _UxGT("关闭电源")  //"Switch power off"
 #define MSG_EXTRUDE                         _UxGT("挤出")  //"Extrude"
 #define MSG_RETRACT                         _UxGT("回抽")  //"Retract"
 #define MSG_MOVE_AXIS                       _UxGT("移动轴")  //"Move axis"
@@ -81,6 +90,18 @@
 
 #define MSG_NEXT_CORNER                     _UxGT("下个边角") // "Next corner"
 #define MSG_EDITING_STOPPED                 _UxGT("网格编辑已停止") // "Mesh Editing Stopped"
+#define MSG_MESH_X                          _UxGT("X索引") // Index X
+#define MSG_MESH_Y                          _UxGT("Y索引") // Index Y
+#define MSG_MESH_EDIT_Z                     _UxGT("Z值") // Z Value
+#define MSG_IDEX_MENU                       _UxGT("IDEX模式") // IDEX Mode
+#define MSG_OFFSETS_MENU                    _UxGT("工具偏移") // Tool Offsets
+#define MSG_IDEX_MODE_AUTOPARK              _UxGT("自动泊位") // Auto-Park
+#define MSG_IDEX_MODE_DUPLICATE             _UxGT("重复") // Duplication
+#define MSG_IDEX_MODE_MIRRORED_COPY         _UxGT("镜像复制") // Mirrored copy
+#define MSG_IDEX_MODE_FULL_CTRL             _UxGT("全面控制") // Full control
+#define MSG_X_OFFSET                        _UxGT("第二喷嘴X") // 2nd nozzle X
+#define MSG_Y_OFFSET                        _UxGT("第二喷嘴Y") // 2nd nozzle Y
+#define MSG_Z_OFFSET                        _UxGT("第二喷嘴Z") // 2nd nozzle Z
 #define MSG_USER_MENU                       _UxGT("定制命令") // "Custom Commands"
 
 #define MSG_UBL_DOING_G29                   _UxGT("执行G29") // "Doing G29"
@@ -242,17 +263,24 @@
 #define MSG_LOAD_EEPROM                     _UxGT("装载设置")  //"Load memory"
 #define MSG_RESTORE_FAILSAFE                _UxGT("恢复安全值")  //"Restore failsafe"
 #define MSG_INIT_EEPROM                     _UxGT("初始化设置") // "Initialize EEPROM"
+#define MSG_SD_UPDATE                       _UxGT("SD卡更新") // SD Update
+#define MSG_RESET_PRINTER                   _UxGT("重置打印机") // Reset Printer
 #define MSG_REFRESH                         _UxGT("刷新")  //"Refresh"
 #define MSG_WATCH                           _UxGT("信息屏")  //"Info screen"
 #define MSG_PREPARE                         _UxGT("准备")  //"Prepare"
 #define MSG_TUNE                            _UxGT("调整")  //"Tune"
+#define MSG_START_PRINT                     _UxGT("开始打印") // Start print
+#define MSG_BUTTON_PRINT                    _UxGT("打印") // Print
+#define MSG_BUTTON_CANCEL                   _UxGT("取消") // Cancel
 #define MSG_PAUSE_PRINT                     _UxGT("暂停打印")  //"Pause print"
 #define MSG_RESUME_PRINT                    _UxGT("恢复打印")  //"Resume print"
 #define MSG_STOP_PRINT                      _UxGT("停止打印")  //"Stop print"
+#define MSG_OUTAGE_RECOVERY                 _UxGT("中断恢复") // Outage Recovery
 #define MSG_CARD_MENU                       _UxGT("从存储卡上打印")  //"Print from SD"
 #define MSG_NO_CARD                         _UxGT("无存储卡")  //"No SD card"
 #define MSG_DWELL                           _UxGT("休眠中 ...")  //"Sleep..."
 #define MSG_USERWAIT                        _UxGT("点击继续 ...")  //"Click to resume..."
+#define MSG_PRINTING                        _UxGT("打印中 ...") // Printing...
 #define MSG_PRINT_PAUSED                    _UxGT("暫停打印") // "Print paused"
 #define MSG_PRINT_ABORTED                   _UxGT("已取消打印")  //"Print aborted"
 #define MSG_NO_MOVE                         _UxGT("无移动")  //"No move."
@@ -267,6 +295,12 @@
 #define MSG_CONTROL_RETRACT_RECOVERF        _UxGT("回抽恢复后进料速率mm/s")  //"UnRet  V" retract_recover_feedrate_mm_s, feedrate for recovering from retraction (mm/s)
 #define MSG_CONTROL_RETRACT_RECOVER_SWAPF   _UxGT("S UnRet V") // "S UnRet V"
 #define MSG_AUTORETRACT                     _UxGT("自动抽回")  //"AutoRetr." autoretract_enabled,
+#define MSG_FILAMENT_SWAP_LENGTH            _UxGT("回抽距离") // Retract Distance
+#define MSG_TOOL_CHANGE                     _UxGT("更换工具") // Tool Change
+#define MSG_TOOL_CHANGE_ZLIFT               _UxGT("升起Z") // Z Raise
+#define MSG_SINGLENOZZLE_PRIME_SPD          _UxGT("填充速度") // Prime Speed
+#define MSG_SINGLENOZZLE_RETRACT_SPD        _UxGT("回抽速度") // Retract Speed
+#define MSG_NOZZLE_STANDBY                  _UxGT("喷嘴等待") // Nozzle Standby
 #define MSG_FILAMENTCHANGE                  _UxGT("更换丝料")  //"Change filament"
 #define MSG_FILAMENTLOAD                    _UxGT("装载丝料") // "Load filament"
 #define MSG_FILAMENTUNLOAD                  _UxGT("卸载丝料") // "Unload filament"
@@ -301,7 +335,9 @@
 #define MSG_SHORT_HOUR                      _UxGT("时")  //"h" // One character only
 #define MSG_SHORT_MINUTE                    _UxGT("分")  //"m" // One character only
 #define MSG_HEATING                         _UxGT("加热中 ...")  //"Heating..."
+#define MSG_COOLING                         _UxGT("冷却中 ...") //Cooling...
 #define MSG_BED_HEATING                     _UxGT("加热热床中 ...")  //"Bed Heating..."
+#define MSG_BED_COOLING                     _UxGT("冷却热床中 ...") // Bed cooling...
 #define MSG_DELTA_CALIBRATE                 _UxGT("⊿校准")  //"Delta Calibration"
 #define MSG_DELTA_CALIBRATE_X               _UxGT("⊿校准X")  //"Calibrate X"
 #define MSG_DELTA_CALIBRATE_Y               _UxGT("⊿校准Y")  //"Calibrate Y"
@@ -356,6 +392,7 @@
 #define MSG_FILAMENT_CHANGE_OPTION_PURGE    _UxGT("清除更多") // "Purge more"
 #define MSG_FILAMENT_CHANGE_OPTION_RESUME   _UxGT("恢复打印")  //"Resume print"
 #define MSG_FILAMENT_CHANGE_NOZZLE          _UxGT("  喷嘴: ") // "  Nozzle: "
+#define MSG_RUNOUT_SENSOR                   _UxGT("断料传感器") // Runout Sensor
 #define MSG_ERR_HOMING_FAILED               _UxGT("归原位失败") // "Homing failed"
 #define MSG_ERR_PROBING_FAILED              _UxGT("探针探测失败") // "Probing failed"
 #define MSG_M600_TOO_COLD                   _UxGT("M600: 太凉") // "M600: Too cold"
