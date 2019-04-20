@@ -671,7 +671,7 @@
 #define LCD_DECIMAL_SMALL_XY
 
 // The timeout (in ms) to return to the status screen from sub-menus
-//#define LCD_TIMEOUT_TO_STATUS 15000
+#define LCD_TIMEOUT_TO_STATUS 15000
 
 // Add an 'M73' G-code to set the current percentage
 #define LCD_SET_PROGRESS_MANUALLY
@@ -731,7 +731,7 @@
    * an option on the LCD screen to continue the print from the last-known
    * point in the file.
    */
-  //#define POWER_LOSS_RECOVERY
+//  #define POWER_LOSS_RECOVERY
   #if ENABLED(POWER_LOSS_RECOVERY)
     //#define POWER_LOSS_PIN   44     // Pin to detect power loss
     //#define POWER_LOSS_STATE HIGH   // State of pin indicating power loss
@@ -2005,17 +2005,6 @@
 
   #define USER_DESC_5 "Home & Info"
   #define USER_GCODE_5 "G28\nM503"
-//  #define USER_DESC_1 "Open LED 100%"
-//  #define USER_GCODE_1 "M42 P45 S255"
-//  
-//  #define USER_DESC_2 "Open LED 75%"
-//  #define USER_GCODE_2 "M42 P45 S192"
-//  
-//  #define USER_DESC_3 "Open LED 50%"
-//  #define USER_GCODE_3 "M42 P45 S128"
-//  
-//  #define USER_DESC_4 "Close LED"
-//  #define USER_GCODE_4 "M42 P45 S0"
 #endif
 
 /**

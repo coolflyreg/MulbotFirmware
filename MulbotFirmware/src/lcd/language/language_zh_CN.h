@@ -37,6 +37,8 @@
 #define MSG_SD_REMOVED                      _UxGT("存储卡被拔出")  //"Card removed"
 #define MSG_LCD_ENDSTOPS                    _UxGT("挡块")  //"Endstops" // Max length 8 characters
 #define MSG_MAIN                            _UxGT("主菜单")  //"Main"
+#define MSG_ADVANCED_SETTINGS               _UxGT("高端设置")  //"Advanced Settings"
+#define MSG_CONFIGURATION                   _UxGT("设置")  //"Configuration"
 #define MSG_AUTOSTART                       _UxGT("自动开始")  //"Autostart"
 #define MSG_DISABLE_STEPPERS                _UxGT("关闭步进电机")  //"Disable steppers"
 #define MSG_DEBUG_MENU                      _UxGT("调试菜单")    // "Debug Menu"
@@ -164,6 +166,7 @@
 #define MSG_MOVE_Y                          _UxGT("移动Y")  //"Move Y"
 #define MSG_MOVE_Z                          _UxGT("移动Z")  //"Move Z"
 #define MSG_MOVE_E                          _UxGT("挤出机")  //"Extruder"
+#define MSG_HOTEND_TOO_COLD                 _UxGT("热端太凉")  //"Hotend too cold"
 #define MSG_MOVE_01MM                       _UxGT("移动 0.1 mm")  //"Move 0.1mm"
 #define MSG_MOVE_1MM                        _UxGT("移动 1 mm")  //"Move 1mm"
 #define MSG_MOVE_10MM                       _UxGT("移动 10 mm")  //"Move 10mm"
