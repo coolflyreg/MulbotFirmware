@@ -32,9 +32,8 @@
 #endif
 
 // External references
-extern volatile bool wait_for_user, wait_for_heatup;
+extern bool wait_for_user, wait_for_heatup;
 void quickstop_stepper();
-void host_response_handler(const uint8_t response);
 
 class EmergencyParser {
 
@@ -143,7 +142,7 @@ public:
         break;
 
       case EP_M876:
-        switch(c) {
+        switch (c) {
           case ' ': break;
           case 'S': state = EP_M876S; break;
           default:  state = EP_IGNORE; break;

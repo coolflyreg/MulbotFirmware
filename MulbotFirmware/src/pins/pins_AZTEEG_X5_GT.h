@@ -24,8 +24,8 @@
  * Azteeg X5 GT pin assignments
  */
 
-#ifndef TARGET_LPC1768
-  #error "Oops! Make sure you have the LPC1768 environment selected in your IDE."
+#ifndef LPC1769
+  #error "Oops! Make sure you have the LPC1769 environment selected in your IDE."
 #endif
 
 #define BOARD_NAME        "Azteeg X5 GT"
@@ -112,7 +112,7 @@
 // Display
 //
 
-#if ENABLED(VIKI2) || ENABLED(miniVIKI)
+#if ANY(VIKI2, miniVIKI)
   #define BEEPER_PIN       P1_31
   #define DOGLCD_A0        P2_06
   #define DOGLCD_CS        P0_16

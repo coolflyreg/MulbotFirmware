@@ -94,7 +94,15 @@ void PrintCounter::initStats() {
   loaded = true;
   data = { 0, 0, 0, 0, 0.0
     #if HAS_SERVICE_INTERVALS
-      , SERVICE_INTERVAL_SEC_1, SERVICE_INTERVAL_SEC_2, SERVICE_INTERVAL_SEC_3
+      #if SERVICE_INTERVAL_1 > 0
+        , SERVICE_INTERVAL_SEC_1
+      #endif
+      #if SERVICE_INTERVAL_2 > 0
+        , SERVICE_INTERVAL_SEC_2
+      #endif
+      #if SERVICE_INTERVAL_3 > 0
+        , SERVICE_INTERVAL_SEC_3
+      #endif
     #endif
   };
 
@@ -177,51 +185,32 @@ void PrintCounter::showStats() {
   char buffer[21];
 
   SERIAL_ECHOPGM(MSG_STATS);
+  SERIAL_ECHOLNPAIR(
+    "Prints: ", data.totalPrints,
+    ", Finished: ", data.finishedPrints,
+    ", Failed: ", data.totalPrints - data.finishedPrints
+                    - ((isRunning() || isPaused()) ? 1 : 0) // Remove 1 from failures with an active counter
+  );
 
-  SERIAL_ECHOPGM("Prints: ");
-  SERIAL_ECHO(data.totalPrints);
-
-  SERIAL_ECHOPGM(", Finished: ");
-  SERIAL_ECHO(data.finishedPrints);
-
-  SERIAL_ECHOPGM(", Failed: "); // Note: Removes 1 from failures with an active counter
-  SERIAL_ECHO(data.totalPrints - data.finishedPrints
-    - ((isRunning() || isPaused()) ? 1 : 0));
-
-  SERIAL_EOL();
   SERIAL_ECHOPGM(MSG_STATS);
-
   duration_t elapsed = data.printTime;
   elapsed.toString(buffer);
-
-  SERIAL_ECHOPGM("Total time: ");
-  SERIAL_ECHO(buffer);
-
+  SERIAL_ECHOPAIR("Total time: ", buffer);
   #if ENABLED(DEBUG_PRINTCOUNTER)
-    SERIAL_ECHOPGM(" (");
-    SERIAL_ECHO(data.printTime);
+    SERIAL_ECHOPAIR(" (", data.printTime);
     SERIAL_CHAR(')');
   #endif
 
   elapsed = data.longestPrint;
   elapsed.toString(buffer);
-
-  SERIAL_ECHOPGM(", Longest job: ");
-  SERIAL_ECHO(buffer);
-
+  SERIAL_ECHOPAIR(", Longest job: ", buffer);
   #if ENABLED(DEBUG_PRINTCOUNTER)
-    SERIAL_ECHOPGM(" (");
-    SERIAL_ECHO(data.longestPrint);
+    SERIAL_ECHOPAIR(" (", data.longestPrint);
     SERIAL_CHAR(')');
   #endif
 
-  SERIAL_EOL();
-  SERIAL_ECHOPGM(MSG_STATS);
-
-  SERIAL_ECHOPGM("Filament used: ");
-  SERIAL_ECHO(data.filamentUsed / 1000);
+  SERIAL_ECHOPAIR("\n" MSG_STATS "Filament used: ", data.filamentUsed / 1000);
   SERIAL_CHAR('m');
-
   SERIAL_EOL();
 
   #if SERVICE_INTERVAL_1 > 0

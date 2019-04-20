@@ -144,7 +144,7 @@
  * M140 - Set bed target temp. S<temp>
  * M145 - Set heatup values for materials on the LCD. H<hotend> B<bed> F<fan speed> for S<material> (0=PLA, 1=ABS)
  * M149 - Set temperature units. (Requires TEMPERATURE_UNITS_SUPPORT)
- * M150 - Set Status LED Color as R<red> U<green> B<blue> P<bright>. Values 0-255. (Requires BLINKM, RGB_LED, RGBW_LED, NEOPIXEL_LED, or PCA9632).
+ * M150 - Set Status LED Color as R<red> U<green> B<blue> P<bright>. Values 0-255. (Requires BLINKM, RGB_LED, RGBW_LED, NEOPIXEL_LED, PCA9533, or PCA9632).
  * M155 - Auto-report temperatures with interval of S<seconds>. (Requires AUTO_REPORT_TEMPERATURES)
  * M163 - Set a single proportion for a mixing extruder. (Requires MIXING_EXTRUDER)
  * M164 - Commit the mix and save to a virtual tool (current, or as specified by 'S'). (Requires MIXING_EXTRUDER)
@@ -172,7 +172,7 @@
  * M220 - Set Feedrate Percentage: "M220 S<percent>" (i.e., "FR" on the LCD)
  * M221 - Set Flow Percentage: "M221 S<percent>"
  * M226 - Wait until a pin is in a given state: "M226 P<pin> S<state>"
- * M240 - Trigger a camera to take a photograph. (Requires CHDK_PIN or PHOTOGRAPH_PIN)
+ * M240 - Trigger a camera to take a photograph. (Requires PHOTO_GCODE)
  * M250 - Set LCD contrast: "M250 C<contrast>" (0-63). (Requires LCD support)
  * M260 - i2c Send Data (Requires EXPERIMENTAL_I2CBUS)
  * M261 - i2c Request Data (Requires EXPERIMENTAL_I2CBUS)
@@ -254,6 +254,7 @@
  *
  * ************ Custom codes - This can change to suit future G-code regulations
  * M928 - Start SD logging: "M928 filename.gco". Stop with M29. (Requires SDSUPPORT)
+ * M997 - Perform in-application firmware update
  * M999 - Restart after being stopped by error
  *
  * "T" Codes
@@ -414,7 +415,7 @@ private:
   #endif
 
   #if ENABLED(G38_PROBE_TARGET)
-    static void G38(const bool is_38_2);
+    static void G38(const int8_t subcode);
   #endif
 
   #if HAS_MESH
@@ -479,7 +480,7 @@ private:
     #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
       static void M33();
     #endif
-    #if ENABLED(SDCARD_SORT_ALPHA) && ENABLED(SDSORT_GCODE)
+    #if BOTH(SDCARD_SORT_ALPHA, SDSORT_GCODE)
       static void M34();
     #endif
   #endif
@@ -492,10 +493,6 @@ private:
 
   #if ENABLED(Z_MIN_PROBE_REPEATABILITY_TEST)
     static void M48();
-  #endif
-
-  #if ENABLED(G26_MESH_VALIDATION)
-    static void M49();
   #endif
 
   #if ENABLED(LCD_SET_PROGRESS_MANUALLY)
@@ -575,6 +572,11 @@ private:
     static void M190();
   #endif
 
+  #if HAS_HEATED_CHAMBER
+    static void M141();
+    //static void M191();
+  #endif
+
   #if HAS_LCD_MENU
     static void M145();
   #endif
@@ -631,7 +633,7 @@ private:
     static void M217();
   #endif
 
-  #if HOTENDS > 1
+  #if HAS_HOTEND_OFFSET
     static void M218();
   #endif
 
@@ -639,7 +641,7 @@ private:
   static void M221();
   static void M226();
 
-  #if PIN_EXISTS(CHDK) || HAS_PHOTOGRAPH
+  #if ENABLED(PHOTO_GCODE)
     static void M240();
   #endif
 
@@ -700,7 +702,7 @@ private:
     static bool M364();
   #endif
 
-  #if ENABLED(EXT_SOLENOID) || ENABLED(MANUAL_SOLENOID_CONTROL)
+  #if EITHER(EXT_SOLENOID, MANUAL_SOLENOID_CONTROL)
     static void M380();
     static void M381();
   #endif
@@ -763,7 +765,7 @@ private:
     static void M603();
   #endif
 
-  #if ENABLED(DUAL_X_CARRIAGE) || ENABLED(DUAL_NOZZLE_DUPLICATION_MODE)
+  #if HAS_DUPLICATION_MODE
     static void M605();
   #endif
 
@@ -839,7 +841,7 @@ private:
     static void M918();
   #endif
 
-  #if HAS_DIGIPOTSS || HAS_MOTOR_CURRENT_PWM || ENABLED(DIGIPOT_I2C) || ENABLED(DAC_STEPPER_CURRENT)
+  #if HAS_DIGIPOTSS || HAS_MOTOR_CURRENT_PWM || EITHER(DIGIPOT_I2C, DAC_STEPPER_CURRENT)
     static void M907();
     #if HAS_DIGIPOTSS || ENABLED(DAC_STEPPER_CURRENT)
       static void M908();
@@ -856,6 +858,10 @@ private:
 
   #if ENABLED(MAGNETIC_PARKING_EXTRUDER)
     static void M951();
+  #endif
+
+  #if ENABLED(PLATFORM_M997_SUPPORT)
+    static void M997();
   #endif
 
   static void M999();

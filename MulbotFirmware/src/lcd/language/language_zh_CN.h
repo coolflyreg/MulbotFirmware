@@ -31,14 +31,16 @@
 
 #define CHARSIZE 3
 
+#define MSG_HOTEND_TOO_COLD                 _UxGT("热端太凉")  //"Hotend too cold"
+#define MSG_ADVANCED_SETTINGS               _UxGT("高端设置")
+#define MSG_CONFIGURATION                   _UxGT("设置")
+
 #define WELCOME_MSG                         MACHINE_NAME _UxGT("已就绪.")  //" ready."
 #define MSG_BACK                            _UxGT("返回")         // ”Back“
 #define MSG_SD_INSERTED                     _UxGT("存储卡已插入")  //"Card inserted"
 #define MSG_SD_REMOVED                      _UxGT("存储卡被拔出")  //"Card removed"
 #define MSG_LCD_ENDSTOPS                    _UxGT("挡块")  //"Endstops" // Max length 8 characters
 #define MSG_MAIN                            _UxGT("主菜单")  //"Main"
-#define MSG_ADVANCED_SETTINGS               _UxGT("高端设置")  //"Advanced Settings"
-#define MSG_CONFIGURATION                   _UxGT("设置")  //"Configuration"
 #define MSG_AUTOSTART                       _UxGT("自动开始")  //"Autostart"
 #define MSG_DISABLE_STEPPERS                _UxGT("关闭步进电机")  //"Disable steppers"
 #define MSG_DEBUG_MENU                      _UxGT("调试菜单")    // "Debug Menu"
@@ -166,7 +168,6 @@
 #define MSG_MOVE_Y                          _UxGT("移动Y")  //"Move Y"
 #define MSG_MOVE_Z                          _UxGT("移动Z")  //"Move Z"
 #define MSG_MOVE_E                          _UxGT("挤出机")  //"Extruder"
-#define MSG_HOTEND_TOO_COLD                 _UxGT("热端太凉")  //"Hotend too cold"
 #define MSG_MOVE_01MM                       _UxGT("移动 0.1 mm")  //"Move 0.1mm"
 #define MSG_MOVE_1MM                        _UxGT("移动 1 mm")  //"Move 1mm"
 #define MSG_MOVE_10MM                       _UxGT("移动 10 mm")  //"Move 10mm"
@@ -259,8 +260,8 @@
 #define MSG_CONTROL_RETRACT_SWAP            _UxGT("换手回抽长度mm")  //"Swap Re.mm" swap_retract_length, swap retract length (positive mm), for extruder change
 #define MSG_CONTROL_RETRACTF                _UxGT("回抽速率mm/s")  //"Retract  V" retract_feedrate_mm_s, feedrate for retracting (mm/s)
 #define MSG_CONTROL_RETRACT_ZHOP            _UxGT("Hop mm")  //"Hop mm" retract_zraise, retract Z-lift
-#define MSG_CONTROL_RETRACT_RECOVER         _UxGT("回抽恢复长度mm")  //"UnRet +mm" retract_recover_length, additional recover length (mm, added to retract length when recovering)
-#define MSG_CONTROL_RETRACT_RECOVER_SWAP    _UxGT("换手回抽恢复长度mm")  //"S UnRet+mm" swap_retract_recover_length, additional swap recover length (mm, added to retract length when recovering from extruder change)
+#define MSG_CONTROL_RETRACT_RECOVER         _UxGT("回抽恢复长度mm")  //"UnRet +mm" retract_recover_extra, additional recover length (mm, added to retract length when recovering)
+#define MSG_CONTROL_RETRACT_RECOVER_SWAP    _UxGT("换手回抽恢复长度mm")  //"S UnRet+mm" swap_retract_recover_extra, additional swap recover length (mm, added to retract length when recovering from extruder change)
 #define MSG_CONTROL_RETRACT_RECOVERF        _UxGT("回抽恢复后进料速率mm/s")  //"UnRet  V" retract_recover_feedrate_mm_s, feedrate for recovering from retraction (mm/s)
 #define MSG_CONTROL_RETRACT_RECOVER_SWAPF   _UxGT("S UnRet V") // "S UnRet V"
 #define MSG_AUTORETRACT                     _UxGT("自动抽回")  //"AutoRetr." autoretract_enabled,
