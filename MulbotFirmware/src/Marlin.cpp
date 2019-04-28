@@ -220,9 +220,13 @@ void SetUpFAN2_PIN()
 
 void Fan2Scan()
 {
-    if(thermalManager.degHotend(0)>65)
-        WRITE(V5_COOLING_PIN, HIGH);
-    else WRITE(V5_COOLING_PIN, LOW);
+#ifdef OPEN_COOLING_FAN_ALWAYS
+      WRITE(V5_COOLING_PIN, HIGH);
+#else
+      if(thermalManager.degHotend(0)>45)
+          WRITE(V5_COOLING_PIN, HIGH);
+      else WRITE(V5_COOLING_PIN, LOW);
+#endif
 }
 
 

@@ -2121,6 +2121,12 @@
 
     #define USER_DESC_1 "准备打印"
     #define USER_GCODE_1 "G91\nG1 Z2\nG28 X0 Y0\nG90\nG1 Y180"
+    
+    #define USER_DESC_2 "Dry Run Mode"
+    #define USER_GCODE_2 "M111 S8"
+    
+    #define USER_DESC_3 "Reset to normal mode"
+    #define USER_GCODE_3 "M111 S0"
 #endif
 
 /**

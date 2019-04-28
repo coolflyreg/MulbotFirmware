@@ -77,7 +77,28 @@
 #define FAN2_PIN          -1// 44
 #define FAN_PIN           TRIGORILLA_FAN0_PIN
 
+
+#define E2_MS1_PIN  -1
+#define E2_MS2_PIN  -1
+#define E2_MS3_PIN  -1
+
+#define E2_STEP_PIN      15 //Y_MAX_PIN
+#define E2_DIR_PIN       19 //Z_MAX_PIN
+#define E2_ENABLE_PIN    2  //X_MAX_PIN
+
+#define E2_Extension_Enable
+// #undef X_MAX_PIN
+// #undef Y_MAX_PIN
+// #undef Z_MAX_PIN
+
+// #define X_MAX_PIN   -1
+// #define Y_MAX_PIN   -1
+// #define Z_MAX_PIN   -1
+
 #include "pins_RAMPS.h"
+
+
+
 
 //
 // AnyCubic made the following changes to 1.1.0-RC8

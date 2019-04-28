@@ -81,12 +81,24 @@
 //
 #define X_MIN_PIN           3
 #ifndef X_MAX_PIN
-  #define X_MAX_PIN         2
+  #ifdef E2_Extension_Enable
+    #define X_MAX_PIN         -1
+  #else
+    #define X_MAX_PIN         2
+  #endif
 #endif
 #define Y_MIN_PIN          14
-#define Y_MAX_PIN          15
+#ifdef E2_Extension_Enable
+  #define Y_MAX_PIN          -1
+#else
+  #define Y_MAX_PIN          15
+#endif
 #define Z_MIN_PIN          18
-#define Z_MAX_PIN          19
+#ifdef E2_Extension_Enable
+  #define Z_MAX_PIN          -1
+#else
+  #define Z_MAX_PIN          19
+#endif
 
 //
 // Z Probe (when not Z_MIN_PIN)
