@@ -133,7 +133,7 @@
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
   #define IS_RAMPS_EFB
-  #define OPEN_COOLING_FAN_ALWAYS
+//  #define OPEN_COOLING_FAN_ALWAYS
   #define MOTHERBOARD BOARD_TRIGORILLA_14 //BOARD_RAMPS_14_EFB
 #endif
 
@@ -456,9 +456,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Mulbot Diamond Hotend
-  #define DEFAULT_Kp 63.43
-  #define DEFAULT_Ki 5.34
-  #define DEFAULT_Kd 188.38
+  #define DEFAULT_Kp 82.00
+  #define DEFAULT_Ki 7.01
+  #define DEFAULT_Kd 236.78
 
   // Ultimaker
 //  #define DEFAULT_Kp 22.2
