@@ -38,7 +38,7 @@
 
 #include "HAL.h"
 #include "../shared/HAL_SPI.h"
-#include "pins_arduino.h"
+#include <pins_arduino.h>
 #include "spi_pins.h"
 #include "../../core/macros.h"
 #include <SPI.h>
@@ -165,7 +165,7 @@ void spiSendBlock(uint8_t token, const uint8_t* buf) {
   #ifdef STM32GENERIC
     SPI.dmaSend(const_cast<uint8_t*>(buf), 512);
   #else
-    SPI.transfer((uint8_t*)buf, (uint8_t*)0, 512);
+    SPI.transfer((uint8_t*)buf, nullptr, 512);
   #endif
 
   SPI.endTransaction();

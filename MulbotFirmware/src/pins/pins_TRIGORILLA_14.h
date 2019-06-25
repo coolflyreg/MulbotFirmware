@@ -73,8 +73,8 @@
 #undef FAN_PIN
 #endif
 
-#define V5_COOLING_PIN    TRIGORILLA_FAN2_PIN
-#define FAN2_PIN          -1// 44
+#define V5_COOLING_PIN    TRIGORILLA_HEATER_BED_PIN//TRIGORILLA_FAN2_PIN
+#define FAN2_PIN          -1//44
 #define FAN_PIN           TRIGORILLA_FAN0_PIN
 
 

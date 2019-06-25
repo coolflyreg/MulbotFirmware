@@ -39,12 +39,9 @@
   #include "../../feature/tmc_util.h"
 #endif
 
-#if HOMING_Z_WITH_PROBE || ENABLED(BLTOUCH)
+#if HAS_BED_PROBE
   #include "../../module/probe.h"
-#endif
-
-#if ENABLED(BLTOUCH)
-  #include "../../feature/bltouch.h"
+  #define STOW_PROBE_BEFORE_HOMING NONE(Z_PROBE_ALLEN_KEY, Z_PROBE_SLED)
 #endif
 
 #include "../../lcd/ultralcd.h"
@@ -237,16 +234,12 @@ void GcodeSuite::G28(const bool always_home_all) {
     workspace_plane = PLANE_XY;
   #endif
 
-  #if ENABLED(BLTOUCH)
-    bltouch.init();
-  #endif
-
   // Always home with tool 0 active
   #if HOTENDS > 1
     #if DISABLED(DELTA) || ENABLED(DELTA_HOME_TO_SAFE_ZONE)
       const uint8_t old_tool_index = active_extruder;
     #endif
-    tool_change(0, 0, true);
+    tool_change(0, true);
   #endif
 
   #if HAS_DUPLICATION_MODE
@@ -264,15 +257,15 @@ void GcodeSuite::G28(const bool always_home_all) {
 
   #else // NOT DELTA
 
-    const bool homeX = always_home_all || parser.seen('X'),
-               homeY = always_home_all || parser.seen('Y'),
-               homeZ = always_home_all || parser.seen('Z'),
-               home_all = (!homeX && !homeY && !homeZ) || (homeX && homeY && homeZ),
-               doX = home_all || homeX,
-               doY = home_all || homeY,
-               doZ = home_all || homeZ;
+    const bool homeX = parser.seen('X'), homeY = parser.seen('Y'), homeZ = parser.seen('Z'),
+               home_all = always_home_all || (homeX == homeY && homeX == homeZ),
+               doX = home_all || homeX, doY = home_all || homeY, doZ = home_all || homeZ;
 
     set_destination_from_current();
+
+    #if STOW_PROBE_BEFORE_HOMING
+      STOW_PROBE();
+    #endif
 
     #if Z_HOME_DIR > 0  // If homing away from BED do Z first
 
@@ -433,7 +426,7 @@ void GcodeSuite::G28(const bool always_home_all) {
     #else
       #define NO_FETCH true
     #endif
-    tool_change(old_tool_index, 0, NO_FETCH);
+    tool_change(old_tool_index, NO_FETCH);
   #endif
 
   ui.refresh();

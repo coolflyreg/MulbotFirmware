@@ -32,11 +32,9 @@
   #include "../feature/mixing.h"
 #endif
 
-#define SAVE_INFO_INTERVAL_MS 0
-//#define SAVE_EACH_CMD_MODE
 //#define DEBUG_POWER_LOSS_RECOVERY
-#define POWER_LOSS_PURGE_LEN 20
-#define POWER_LOSS_RETRACT_LEN 10
+//#define SAVE_EACH_CMD_MODE
+//#define SAVE_INFO_INTERVAL_MS 0
 
 typedef struct {
   uint8_t valid_head;
@@ -53,8 +51,8 @@ typedef struct {
 
   uint16_t feedrate;
 
-  #if HOTENDS > 1
-    uint8_t active_hotend;
+  #if EXTRUDERS > 1
+    uint8_t active_extruder;
   #endif
 
   int16_t target_temperature[HOTENDS];
@@ -89,8 +87,8 @@ typedef struct {
   bool relative_mode, relative_modes_e;
 
   // Command queue
-  uint8_t commands_in_queue, cmd_queue_index_r;
-  char command_queue[BUFSIZE][MAX_CMD_SIZE];
+  uint8_t queue_length, queue_index_r;
+  char queue_buffer[BUFSIZE][MAX_CMD_SIZE];
 
   // SD Filename and position
   char sd_filename[MAXPATHNAMELENGTH];

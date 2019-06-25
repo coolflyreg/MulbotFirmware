@@ -46,7 +46,7 @@
   #define ADC_KEY_NUM 8
   #define ULTIPANEL
 
-  // this helps to implement ADC_KEYPAD menus
+  // This helps to implement ADC_KEYPAD menus
   #define REVERSE_MENU_DIRECTION
   #define ENCODER_PULSES_PER_STEP 1
   #define ENCODER_STEPS_PER_MENU_ITEM 1
@@ -97,8 +97,6 @@
 
   #define U8GLIB_SSD1306
   #define ULTIPANEL
-  #define REVERSE_ENCODER_DIRECTION
-  #define REVERSE_MENU_DIRECTION
 
 #elif ENABLED(RA_CONTROL_PANEL)
 
@@ -138,27 +136,49 @@
 #elif ENABLED(MKS_MINI_12864)
 
   #define MINIPANEL
+  #define DEFAULT_LCD_CONTRAST 150
+  #define LCD_CONTRAST_MAX 255
 
-#elif ENABLED(FYSETC_MINI_12864)
+#elif ANY(FYSETC_MINI_12864_X_X, FYSETC_MINI_12864_1_2, FYSETC_MINI_12864_2_0, FYSETC_MINI_12864_2_1)
 
+  #define FYSETC_MINI_12864
   #define DOGLCD
   #define ULTIPANEL
   #define LCD_CONTRAST_MIN 0
   #define LCD_CONTRAST_MAX 255
-  #define DEFAULT_LCD_CONTRAST 255
+  #define DEFAULT_LCD_CONTRAST 220
   #define LED_COLORS_REDUCE_GREEN
+  #if POWER_SUPPLY > 0 && EITHER(FYSETC_MINI_12864_2_0, FYSETC_MINI_12864_2_1)
+    #define LED_BACKLIGHT_TIMEOUT 10000
+  #endif
+
+  // Require LED backlighting enabled
+  #if EITHER(FYSETC_MINI_12864_1_2, FYSETC_MINI_12864_2_0)
+    #define RGB_LED
+  #elif ENABLED(FYSETC_MINI_12864_2_1)
+    #define NEOPIXEL_LED
+    #undef NEOPIXEL_TYPE
+    #define NEOPIXEL_TYPE       NEO_RGB
+    #undef NEOPIXEL_PIXELS
+    #define NEOPIXEL_PIXELS     3
+    #ifndef NEOPIXEL_BRIGHTNESS
+      #define NEOPIXEL_BRIGHTNESS 127
+    #endif
+    #define NEOPIXEL_STARTUP_TEST
+  #endif
 
 #endif
 
 #if EITHER(MAKRPANEL, MINIPANEL)
   #define DOGLCD
   #define ULTIPANEL
-  #define DEFAULT_LCD_CONTRAST 17
+  #ifndef DEFAULT_LCD_CONTRAST
+    #define DEFAULT_LCD_CONTRAST 17
+  #endif
 #endif
 
 #if ENABLED(ULTI_CONTROLLER)
   #define U8GLIB_SSD1309
-  #define REVERSE_ENCODER_DIRECTION
   #define LCD_RESET_PIN LCD_PINS_D6 //  This controller need a reset pin
   #define LCD_CONTRAST_MIN 0
   #define LCD_CONTRAST_MAX 254
@@ -314,8 +334,14 @@
   #define ULTRA_LCD
 #endif
 
+// Extensible UI serial touch screens. (See src/lcd/extensible_ui)
+#if EITHER(DGUS_LCD, MALYAN_LCD)
+  #define EXTENSIBLE_UI
+#endif
+
 // Aliases for LCD features
 #define HAS_SPI_LCD          ENABLED(ULTRA_LCD)
+#define HAS_DISPLAY         (HAS_SPI_LCD || ENABLED(EXTENSIBLE_UI))
 #define HAS_GRAPHICAL_LCD    ENABLED(DOGLCD)
 #define HAS_CHARACTER_LCD   (HAS_SPI_LCD && !HAS_GRAPHICAL_LCD)
 #define HAS_LCD_MENU        (ENABLED(ULTIPANEL) && DISABLED(NO_LCD_MENUS))
@@ -379,9 +405,6 @@
   #define E_MANUAL        EXTRUDERS
 #elif ENABLED(PRUSA_MMU2)
   #define E_STEPPERS 1
-  #ifndef TOOLCHANGE_ZRAISE
-    #define TOOLCHANGE_ZRAISE 0
-  #endif
 #endif
 
 // No inactive extruders with MK2_MULTIPLEXER or SWITCHING_NOZZLE
@@ -450,9 +473,6 @@
     #undef SERVO_DELAY
     #define SERVO_DELAY { 50 }
   #endif
-  #ifndef BLTOUCH_DELAY
-    #define BLTOUCH_DELAY 375
-  #endif
 
   // Always disable probe pin inverting for BLTouch
   #undef Z_MIN_PROBE_ENDSTOP_INVERTING
@@ -479,23 +499,29 @@
 /**
  * Set flags for enabled probes
  */
-#define HAS_BED_PROBE (HAS_Z_SERVO_PROBE || ANY(FIX_MOUNTED_PROBE, Z_PROBE_ALLEN_KEY, Z_PROBE_SLED, SOLENOID_PROBE, SENSORLESS_PROBING, RACK_AND_PINION_PROBE))
+#define HAS_BED_PROBE (HAS_Z_SERVO_PROBE || ANY(FIX_MOUNTED_PROBE, TOUCH_MI_PROBE, Z_PROBE_ALLEN_KEY, Z_PROBE_SLED, SOLENOID_PROBE, SENSORLESS_PROBING, RACK_AND_PINION_PROBE))
 #define PROBE_SELECTED (HAS_BED_PROBE || EITHER(PROBE_MANUALLY, MESH_BED_LEVELING))
 
 #if HAS_BED_PROBE
   #define USES_Z_MIN_PROBE_ENDSTOP DISABLED(Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN)
+  #define HOMING_Z_WITH_PROBE      (Z_HOME_DIR < 0 && !USES_Z_MIN_PROBE_ENDSTOP)
   #ifndef Z_PROBE_LOW_POINT
     #define Z_PROBE_LOW_POINT -5
   #endif
   #if ENABLED(Z_PROBE_ALLEN_KEY)
     #define PROBE_TRIGGERED_WHEN_STOWED_TEST // Extra test for Allen Key Probe
   #endif
+  #ifdef MULTIPLE_PROBING
+    #if EXTRA_PROBING
+      #define TOTAL_PROBING (MULTIPLE_PROBING + EXTRA_PROBING)
+    #else
+      #define TOTAL_PROBING MULTIPLE_PROBING
+    #endif
+  #endif
 #else
   // Clear probe pin settings when no probe is selected
   #undef Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 #endif
-
-#define HOMING_Z_WITH_PROBE (HAS_BED_PROBE && Z_HOME_DIR < 0 && ENABLED(Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN))
 
 #ifdef GRID_MAX_POINTS_X
   #define GRID_MAX_POINTS ((GRID_MAX_POINTS_X) * (GRID_MAX_POINTS_Y))

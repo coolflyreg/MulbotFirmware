@@ -168,7 +168,8 @@
   #include "pins_VORON.h"             // ATmega2560                                 env:megaatmega2560
 #elif MB(TRONXY_V3_1_0)
   #include "pins_TRONXY_V3_1_0.h"     // ATmega2560                                 env:megaatmega2560
-
+#elif MB(RAMPSXB)
+  #include "pins_RAMPSXB.h"     // ATmega2560                                 env:megaatmega2560
 //
 // Other ATmega1280, ATmega2560
 //
@@ -336,6 +337,8 @@
   #include "pins_COHESION3D_MINI.h"     // LPC1769                                    env:LPC1769
 #elif MB(SMOOTHIEBOARD)
   #include "pins_SMOOTHIEBOARD.h"       // LPC1769                                    env:LPC1769
+#elif MB(FLY32)
+  #include "pins_SMOOTHIEBOARDFLY.h"     // LPC1769        env:LPC1769
 #elif MB(BIQU_SKR_V1_1)
   #include "pins_BIQU_SKR_V1.1.h"       // LPC1768                                    env:LPC1768
 #elif MB(BIQU_B300_V1_0)

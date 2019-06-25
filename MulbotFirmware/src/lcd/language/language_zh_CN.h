@@ -34,6 +34,7 @@
 #define MSG_HOTEND_TOO_COLD                 _UxGT("热端太凉")  //"Hotend too cold"
 #define MSG_ADVANCED_SETTINGS               _UxGT("高端设置")
 #define MSG_CONFIGURATION                   _UxGT("设置")
+// #define _BED                                _UxGT("热床")
 
 #define WELCOME_MSG                         MACHINE_NAME _UxGT("已就绪.")  //" ready."
 #define MSG_YES                             _UxGT("是") // YES
@@ -321,11 +322,13 @@
 #define MSG_BABYSTEP_Y                      _UxGT("微量调整Y轴")  //"Babystep Y"
 #define MSG_BABYSTEP_Z                      _UxGT("微量调整Z轴")  //"Babystep Z"
 #define MSG_ENDSTOP_ABORT                   _UxGT("挡块终止")  //"Endstop abort"
-#define MSG_HEATING_FAILED_LCD              _UxGT("加热失败")  //"Heating failed"
+#define MSG_HEATING_FAILED_LCD_BED          _UxGT("热床加热失败")
+#define MSG_HEATING_FAILED_LCD              _UxGT( " 加热失败 " )  //"Heating failed"
 #define MSG_ERR_REDUNDANT_TEMP              _UxGT("错误：REDUNDANT TEMP")  //"Err: REDUNDANT TEMP"
-#define MSG_THERMAL_RUNAWAY                 _UxGT("温控失控")  //"THERMAL RUNAWAY"
-#define MSG_ERR_MAXTEMP                     _UxGT("错误：最高温度")  //"Err: MAXTEMP"
-#define MSG_ERR_MINTEMP                     _UxGT("错误：最低温度")  //"Err: MINTEMP"
+#define MSG_THERMAL_RUNAWAY_BED             _UxGT("热床温控失控")
+#define MSG_THERMAL_RUNAWAY                 _UxGT( " 温控失控 " )  //"THERMAL RUNAWAY"
+#define MSG_ERR_MAXTEMP                     _UxGT( " 错误：最高温度" )  //"Err: MAXTEMP"
+#define MSG_ERR_MINTEMP                     _UxGT( " 错误：最低温度" )  //"Err: MINTEMP"
 #define MSG_ERR_MAXTEMP_BED                 _UxGT("错误：最高热床温度")  //"Err: MAXTEMP BED"
 #define MSG_ERR_MINTEMP_BED                 _UxGT("错误：最低热床温度")  //"Err: MINTEMP BED"
 #define MSG_ERR_Z_HOMING                    MSG_HOME _UxGT(" ") MSG_X MSG_Y _UxGT(" ") MSG_FIRST
