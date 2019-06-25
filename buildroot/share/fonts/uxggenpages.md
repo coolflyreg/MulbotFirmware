@@ -52,7 +52,6 @@ and run the script to generate the font data (`language_data_xx.h`):
 ```bash
 cd marlin-git/Marlin/
 MARLIN_LANGS="zh_CN zh_TW" ../buildroot/share/fonts/genallfont.sh
-MARLIN_LANGS="zh_CN" ../buildroot/share/fonts/genallfont.sh
 ```
 
 3. Change the language settings
