@@ -66,12 +66,12 @@
 #undef HEATER_1_PIN
 
 #define HEATER_0_PIN       10
-#define HEATER_1_PIN       -1//8
-#define HEATER_2_PIN       -1//9
-#define HEATER_3_PIN       -1//4
-#define HEATER_4_PIN       -1//5
-#define HEATER_5_PIN       -1//6
-#define HEATER_6_PIN       -1//45
+#define HEATER_1_PIN       8
+#define HEATER_2_PIN       9
+#define HEATER_3_PIN       4
+#define HEATER_4_PIN       5
+#define HEATER_5_PIN       6
+#define HEATER_6_PIN       45
 
 #undef HEATER_BED_PIN      
 
@@ -83,12 +83,12 @@
 // #define TEMP_BED_PIN        -1
 
 #define TEMP_0_PIN          13   
-#define TEMP_1_PIN          5
+#define TEMP_1_PIN          14
 #define TEMP_2_PIN          15
 #define TEMP_3_PIN          11
 #define TEMP_4_PIN          12
 #define TEMP_5_PIN          10
-#define TEMP_BED_PIN        14
+#define TEMP_BED_PIN        5
 
 #define V5_COOLING_PIN      9
 
