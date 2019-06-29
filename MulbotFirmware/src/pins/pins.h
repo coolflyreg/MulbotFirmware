@@ -338,7 +338,7 @@
 #elif MB(SMOOTHIEBOARD)
   #include "pins_SMOOTHIEBOARD.h"       // LPC1769                                    env:LPC1769
 #elif MB(FLY32)
-  #include "pins_SMOOTHIEBOARDFLY.h"     // LPC1769        env:LPC1769
+  #include "pins_LPCFLY.h"              // LPC1769                                    env:LPC1769
 #elif MB(BIQU_SKR_V1_1)
   #include "pins_BIQU_SKR_V1.1.h"       // LPC1768                                    env:LPC1768
 #elif MB(BIQU_B300_V1_0)

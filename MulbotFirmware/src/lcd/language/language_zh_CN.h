@@ -42,6 +42,8 @@
 #define MSG_BACK                            _UxGT("返回")         // ”Back“
 #define MSG_SD_INSERTED                     _UxGT("存储卡已插入")  //"Card inserted"
 #define MSG_SD_REMOVED                      _UxGT("存储卡被拔出")  //"Card removed"
+#define MSG_SD_RELEASED                     _UxGT("存储卡已释放") //Card released
+#define MSG_RELEASE_SDCARD                  _UxGT("释放存储卡") //Release SD card
 #define MSG_LCD_SOFT_ENDSTOPS               _UxGT("软挡块")
 #define MSG_LCD_ENDSTOPS                    _UxGT("挡块")  //"Endstops" // Max length 8 characters
 #define MSG_MAIN                            _UxGT("主菜单")  //"Main"

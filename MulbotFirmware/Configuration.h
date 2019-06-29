@@ -136,8 +136,8 @@
   // #define IS_RAMPS_EFF
   // #define OPEN_COOLING_FAN_ALWAYS
   // #define MOTHERBOARD BOARD_TRIGORILLA_14 //BOARD_RAMPS_14_EFB
-  // #define MOTHERBOARD BOARD_FLY32
-  #define MOTHERBOARD BOARD_RAMPSXB
+  #define MOTHERBOARD BOARD_FLY32
+  // #define MOTHERBOARD BOARD_RAMPSXB
 #endif
 
 // Optional custom name for your RepStrap or other custom machine
