@@ -273,6 +273,11 @@
 #define MSG_PREPARE                         _UxGT("准备")  //"Prepare"
 #define MSG_TUNE                            _UxGT("调整")  //"Tune"
 #define MSG_START_PRINT                     _UxGT("开始打印") // Start print
+#define MSG_BUTTON_NEXT                     _UxGT("下一个") // "Next"
+#define MSG_BUTTON_INIT                     _UxGT("初始")  // "Init"
+#define MSG_BUTTON_STOP                     _UxGT("停止") // "Stop"
+#define MSG_BUTTON_RESET                    _UxGT("重置") // "Reset"
+#define MSG_BUTTON_DONE                     _UxGT("完成") // "Done"
 #define MSG_BUTTON_PRINT                    _UxGT("打印") // Print
 #define MSG_BUTTON_CANCEL                   _UxGT("取消") // Cancel
 #define MSG_PAUSE_PRINT                     _UxGT("暂停打印")  //"Pause print"
@@ -402,7 +407,29 @@
 #define MSG_ERR_PROBING_FAILED              _UxGT("探针探测失败") // "Probing failed"
 #define MSG_M600_TOO_COLD                   _UxGT("M600: 太凉") // "M600: Too cold"
 
+#define MSG_MIX                             _UxGT("混合") // Mix
+#define MSG_MIX_COMPONENT                   _UxGT("组件") // Component
+#define MSG_MIXER                           _UxGT("混合器") // Mixer
+#define MSG_GRADIENT                        _UxGT("渐变") // Gradient 
+#define MSG_FULL_GRADIENT                   _UxGT("完全渐变") // Full gradient
+#define MSG_TOGGLE_MIX                      _UxGT("混合切换") // Toggle mix
+#define MSG_CYCLE_MIX                       _UxGT("循环混合") // Cycle mix
+#define MSG_GRADIENT_MIX                    _UxGT("渐变混合") // Gradient mix
+#define MSG_REVERSE_GRADIENT                _UxGT("反转渐变") // Reverse Gradient
+#define MSG_ACTIVE_VTOOL                    _UxGT("激活 V-tool") // Active V-tool
+#define MSG_START_VTOOL                     _UxGT("起始 V-tool") // Start V-tool
+#define MSG_END_VTOOL                       _UxGT("结束 V-tool") // "  End V-tool"
+#define MSG_GRADIENT_ALIAS                  _UxGT("V-tool别名") // Alias V-tool
+#define MSG_RESET_VTOOLS                    _UxGT("重置 V-tools") // Reset V-tools
+#define MSG_COMMIT_VTOOL                    _UxGT("提交 V-tool 混合") // Commit V-tool Mix
+#define MSG_VTOOLS_RESET                    _UxGT("全部 V-tools 被重置") // V-tools were reset
+#define MSG_START_Z                         _UxGT("起始 Z") // Start Z
+#define MSG_END_Z                           _UxGT("结束 Z") // "  End Z"
+
 #if LCD_HEIGHT >= 4
+  #define MSG_ADVANCED_PAUSE_WAITING_1      _UxGT("按下按钮")  // "Press button"
+  #define MSG_ADVANCED_PAUSE_WAITING_2      _UxGT("恢复打印") // to resume print
+  #define MSG_PAUSE_PRINT_INIT_1            _UxGT("停靠中...") // "Parking..."
   #define MSG_FILAMENT_CHANGE_INIT_1        _UxGT("等待开始")  //"Wait for start"
   #define MSG_FILAMENT_CHANGE_INIT_2        _UxGT("丝料")  //"of the filament"
   #define MSG_FILAMENT_CHANGE_INIT_3        _UxGT("变更")  //"change"
@@ -419,6 +446,8 @@
   #define MSG_FILAMENT_CHANGE_LOAD_2        _UxGT("进料")  //"filament load"
   #define MSG_FILAMENT_CHANGE_PURGE_1       _UxGT("等待") // "Wait for"
   #define MSG_FILAMENT_CHANGE_PURGE_2       _UxGT("丝料清除") // "filament purge"
+  #define MSG_FILAMENT_CHANGE_CONT_PURGE_1  _UxGT("单击结束") // "Click to finish"
+  #define MSG_FILAMENT_CHANGE_CONT_PURGE_2  _UxGT("丝料清除") // filament purge
   #define MSG_FILAMENT_CHANGE_RESUME_1      _UxGT("等待打印")  //"Wait for print"
   #define MSG_FILAMENT_CHANGE_RESUME_2      _UxGT("恢复")  //"to resume"
 #else // LCD_HEIGHT < 4
@@ -430,3 +459,7 @@
   #define MSG_FILAMENT_CHANGE_PURGE_1       _UxGT("清除中 ...") // "Purging..."
   #define MSG_FILAMENT_CHANGE_RESUME_1      _UxGT("恢复中 ...")  //"Resuming..."
 #endif // LCD_HEIGHT < 4
+
+#define MSG_SERVICE_RESET                   _UxGT("重置") // "Reset"
+
+
