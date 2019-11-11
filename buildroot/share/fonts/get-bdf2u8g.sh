@@ -15,7 +15,7 @@ HERE=$(pwd)
 [[ $HERE =~ 'buildroot/share/fonts'$ ]] || { echo "Change to buildroot/share/fonts to run $(basename $0)" ; exit 1; }
 
 # Download u8glib
-curl -LJO https://github.com/olikraus/u8glib/archive/master.zip
+/usr/bin/curl -LJO https://github.com/olikraus/u8glib/archive/master.zip
 unzip u8glib-master.zip >/dev/null 2>&1
 
 # Patch and build bdf2u8g
