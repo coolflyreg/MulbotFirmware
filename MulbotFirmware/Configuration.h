@@ -132,11 +132,11 @@
 // The following define selects which electronics board you have.
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define IS_RAMPS_EFB
+  // #define IS_RAMPS_EFB
   // #define IS_RAMPS_EFF
   // #define OPEN_COOLING_FAN_ALWAYS
-  // #define MOTHERBOARD BOARD_TRIGORILLA_14 //BOARD_RAMPS_14_EFB
-  #define MOTHERBOARD BOARD_FLY32
+  #define MOTHERBOARD BOARD_TRIGORILLA_14 //BOARD_RAMPS_14_EFB
+  // #define MOTHERBOARD BOARD_FLY32
   // #define MOTHERBOARD BOARD_RAMPSXB
 #endif
 
@@ -147,7 +147,10 @@
 #elif MOTHERBOARD == BOARD_RAMPSXB
 #define CUSTOM_MACHINE_NAME "Mulbot XB"
 #else
-#define CUSTOM_MACHINE_NAME "Mulbot"
+  #if MOTHERBOARD == BOARD_TRIGORILLA_14
+    #define IS_RAMPS_EFB
+  #endif
+#define CUSTOM_MACHINE_NAME "Mulbot MIX"
 #endif
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
@@ -754,7 +757,7 @@
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408, 408, 408, 408, 408 } // BMG for Extruders
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408 } // BMG for Extruders
 #else
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 320, 320, 404, 400, 400, 400 } // Titan for Extruders
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 159.6, 158.2, 404, 400, 400, 400 } // Titan for Extruders
 #endif
 
 /**
