@@ -386,7 +386,7 @@
   #define CASE_LIGHT_PIN 8
   #define CASE_LIGHT_DEFAULT_BRIGHTNESS 105   // Set default power-up brightness (0-255, requires PWM pin)
 #else 
-  #define CASE_LIGHT_PIN 8                  // Override the default pin if needed
+  #define CASE_LIGHT_PIN 45                  // Override the default pin if needed
   #define CASE_LIGHT_DEFAULT_BRIGHTNESS 105   // Set default power-up brightness (0-255, requires PWM pin)
 #endif
   #define INVERT_CASE_LIGHT false             // Set true if Case Light is ON when pin is LOW

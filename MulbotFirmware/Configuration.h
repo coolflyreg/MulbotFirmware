@@ -133,7 +133,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define IS_RAMPS_EFB
+  // #define IS_RAMPS_EFB
   // #define IS_RAMPS_EFF
   // #define OPEN_COOLING_FAN_ALWAYS
   #define MOTHERBOARD BOARD_TRIGORILLA_14 //BOARD_RAMPS_14_EFB
@@ -148,6 +148,9 @@
 #elif MOTHERBOARD == BOARD_RAMPSXB
 #define CUSTOM_MACHINE_NAME "Mulbot XB"
 #else
+  #if MOTHERBOARD == BOARD_TRIGORILLA_14
+    #define IS_RAMPS_EFB
+  #endif
 #define CUSTOM_MACHINE_NAME "Mulbot MIX"
 #endif
 
@@ -774,7 +777,7 @@
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408, 408, 408, 408, 408 } // BMG for Extruders
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408 } // BMG for Extruders
 #else
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 158.2, 161.0, 404, 400, 400, 400 } // Titan for Extruders
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 159.6, 158.2, 404, 400, 400, 400 } // Titan for Extruders
 #endif
 
 /**
