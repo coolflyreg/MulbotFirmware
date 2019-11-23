@@ -664,7 +664,7 @@ void idle(
   #endif
 
   ui.update();
-  Fan2Scan();
+  // Fan2Scan();
 
   #if ENABLED(HOST_KEEPALIVE_FEATURE)
     gcode.host_keepalive();
@@ -983,7 +983,7 @@ void setup() {
     servo_init();
   #endif
   
-  SetUpFAN2_PIN();
+  // SetUpFAN2_PIN();
   
   #if HAS_Z_SERVO_PROBE
     servo_probe_init();

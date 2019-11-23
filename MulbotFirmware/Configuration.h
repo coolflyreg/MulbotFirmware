@@ -148,7 +148,7 @@
 #elif MOTHERBOARD == BOARD_RAMPSXB
 #define CUSTOM_MACHINE_NAME "Mulbot XB"
 #else
-#define CUSTOM_MACHINE_NAME "Mulbot"
+#define CUSTOM_MACHINE_NAME "Mulbot MIX"
 #endif
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -774,7 +774,7 @@
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408, 408, 408, 408, 408 } // BMG for Extruders
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408 } // BMG for Extruders
 #else
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 320, 320, 404, 400, 400, 400 } // Titan for Extruders
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 158.2, 161.0, 404, 400, 400, 400 } // Titan for Extruders
 #endif
 
 /**

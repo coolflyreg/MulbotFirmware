@@ -390,4 +390,27 @@ namespace Language_zh_CN {
     PROGMEM Language_Str MSG_FILAMENT_CHANGE_PURGE         = _UxGT(MSG_1_LINE("清除中 ..."));     // "Purging..."
     PROGMEM Language_Str MSG_FILAMENT_CHANGE_RESUME        = _UxGT(MSG_1_LINE("恢复中 ..."));     //"Resuming..."
   #endif
+
+PROGMEM Language_Str MSG_HOTEND_TOO_COLD                   = _UxGT("热端太凉");  //"Hotend too cold"
+PROGMEM Language_Str MSG_ADVANCED_SETTINGS                 = _UxGT("高端设置");
+PROGMEM Language_Str MSG_CONFIGURATION                     = _UxGT("设置");
+
+PROGMEM Language_Str MSG_MIX                               = _UxGT("混合");// Mix
+PROGMEM Language_Str MSG_MIX_COMPONENT                     = _UxGT("组件");// Component
+PROGMEM Language_Str MSG_MIXER                             = _UxGT("混合器");// Mixer
+PROGMEM Language_Str MSG_GRADIENT                          = _UxGT("渐变");// Gradient 
+PROGMEM Language_Str MSG_FULL_GRADIENT                     = _UxGT("完全渐变");// Full gradient
+PROGMEM Language_Str MSG_TOGGLE_MIX                        = _UxGT("混合切换");// Toggle mix
+PROGMEM Language_Str MSG_CYCLE_MIX                         = _UxGT("循环混合");// Cycle mix
+PROGMEM Language_Str MSG_GRADIENT_MIX                      = _UxGT("渐变混合");// Gradient mix
+PROGMEM Language_Str MSG_REVERSE_GRADIENT                  = _UxGT("反转渐变");// Reverse Gradient
+PROGMEM Language_Str MSG_ACTIVE_VTOOL                      = _UxGT("激活 V-tool");// Active V-tool
+PROGMEM Language_Str MSG_START_VTOOL                       = _UxGT("起始 V-tool");// Start V-tool
+PROGMEM Language_Str MSG_END_VTOOL                         = _UxGT("结束 V-tool");// "  End V-tool"
+PROGMEM Language_Str MSG_GRADIENT_ALIAS                    = _UxGT("V-tool别名");// Alias V-tool
+PROGMEM Language_Str MSG_RESET_VTOOLS                      = _UxGT("重置 V-tools");// Reset V-tools
+PROGMEM Language_Str MSG_COMMIT_VTOOL                      = _UxGT("提交 V-tool 混合");// Commit V-tool Mix
+PROGMEM Language_Str MSG_VTOOLS_RESET                      = _UxGT("全部 V-tools 被重置");// V-tools were reset
+PROGMEM Language_Str MSG_START_Z                           = _UxGT("起始 Z");// Start Z
+PROGMEM Language_Str MSG_END_Z                             = _UxGT("结束 Z");// "  End Z"
 }
