@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,16 +22,17 @@
 #pragma once
 
 #include "../inc/MarlinConfigPre.h"
+#include "../core/types.h"
 
 #if EXTRUDERS > 1
 
   typedef struct {
     #if ENABLED(TOOLCHANGE_FILAMENT_SWAP)
-      float swap_length;
+      float swap_length, extra_prime;
       int16_t prime_speed, retract_speed;
     #endif
     #if ENABLED(TOOLCHANGE_PARK)
-      struct { float x, y; } change_point;
+      xy_pos_t change_point;
     #endif
     float z_raise;
   } toolchange_settings_t;
@@ -71,12 +72,12 @@
 #elif ENABLED(MAGNETIC_PARKING_EXTRUDER)
 
   typedef struct MPESettings {
-    float parking_xpos[2],      // M951 L R
-          grab_distance,        // M951 I
-          slow_feedrate,        // M951 J
-          fast_feedrate,        // M951 H
-          travel_distance,      // M951 D
-          compensation_factor;  // M951 C
+      float parking_xpos[2],      // M951 L R
+            grab_distance;        // M951 I
+ feedRate_t slow_feedrate,        // M951 J
+            fast_feedrate;        // M951 H
+      float travel_distance,      // M951 D
+            compensation_factor;  // M951 C
   } mpe_settings_t;
 
   extern mpe_settings_t mpe_settings;
@@ -90,6 +91,10 @@
   #if FAN_COUNT > 0
     extern uint8_t singlenozzle_fan_speed[EXTRUDERS];
   #endif
+#endif
+
+#if ENABLED(ELECTROMAGNETIC_SWITCHING_TOOLHEAD)
+  void est_init();
 #endif
 
 /**

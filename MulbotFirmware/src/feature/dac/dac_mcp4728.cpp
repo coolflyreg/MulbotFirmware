@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
 
 #include "dac_mcp4728.h"
 
-uint16_t mcp4728_values[XYZE];
+xyze_uint_t mcp4728_values;
 
 /**
  * Begin I2C, get current values (input register and eeprom) of mcp4728
@@ -108,7 +108,7 @@ uint16_t mcp4728_getValue(const uint8_t channel) { return mcp4728_values[channel
 uint16_t mcp4728_getVout(const uint8_t channel) {
   const uint32_t vref = 2048,
                  vOut = (vref * mcp4728_values[channel] * (_DAC_STEPPER_GAIN + 1)) / 4096;
-  return MIN(vOut, defaultVDD);
+  return _MIN(vOut, defaultVDD);
 }
 #endif
 
@@ -121,8 +121,8 @@ uint8_t mcp4728_getDrvPct(const uint8_t channel) { return uint8_t(100.0 * mcp472
  * Receives all Drive strengths as 0-100 percent values, updates
  * DAC Values array and calls fastwrite to update the DAC.
  */
-void mcp4728_setDrvPct(uint8_t pct[XYZE]) {
-  LOOP_XYZE(i) mcp4728_values[i] = 0.01 * pct[i] * (DAC_STEPPER_MAX);
+void mcp4728_setDrvPct(xyze_uint8_t &pct) {
+  mcp4728_values *= 0.01 * pct * (DAC_STEPPER_MAX);
   mcp4728_fastWrite();
 }
 

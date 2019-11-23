@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,5 @@
 
 #define WDT_TIMEOUT   4000000 // 4 second timeout
 
-void watchdog_init(void);
-void watchdog_reset(void);
-void HAL_clear_reset_source(void);
-uint8_t HAL_get_reset_source(void);
+void watchdog_init();
+void HAL_watchdog_refresh();

@@ -29,7 +29,7 @@
 #define FILWIDTH_PIN      -1
 #define FIL_RUNOUT_PIN    -1
 
-#include "pins_RAMPS.h"
+#include "ramps/pins_RAMPS.h"
 
 #undef X_MAX_PIN
 #undef Y_MAX_PIN
