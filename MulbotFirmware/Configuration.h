@@ -468,7 +468,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 255
+#define HEATER_0_MAXTEMP 275
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -777,7 +777,7 @@
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408, 408, 408, 408, 408 } // BMG for Extruders
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, 408 } // BMG for Extruders
 #else
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 159.6, 158.2, 404, 400, 400, 400 } // Titan for Extruders
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 159.6, 153.6, 400, 400, 400, 400 } // Titan for Extruders
 #endif
 
 /**
