@@ -380,7 +380,7 @@
 // #endif
 #if ENABLED(CASE_LIGHT_ENABLE)
 #if MOTHERBOARD == BOARD_FLY32
-  // #define CASE_LIGHT_PIN P1_21                  // Override the default pin if needed
+  #define CASE_LIGHT_PIN P1_21                  // Override the default pin if needed
   #define CASE_LIGHT_DEFAULT_BRIGHTNESS 230   // Set default power-up brightness (0-255, requires PWM pin)
 #elif MOTHERBOARD == BOARD_RAMPSXB
   #define CASE_LIGHT_PIN 8
@@ -1108,7 +1108,7 @@
      *
      * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
      */
-    //#define SDCARD_CONNECTION LCD
+    // #define SDCARD_CONNECTION LCD
   #endif
 
 #endif // SDSUPPORT

@@ -1,25 +1,4 @@
-﻿/**
- * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
- *
- * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
-
+﻿
 
 #ifndef MCU_LPC1769
   #error "Oops! Make sure you have the LPC1769 environment selected in your IDE."
@@ -152,15 +131,53 @@
 #define ENET_TXD1          P1_01   // J12-12
 
 
+//****************************************************************
+//*** OLD DISPLAY SETTING - BEGIN
+//****************************************************************
+
 //#define USB_SD_DISABLED
-#define USB_SD_ONBOARD        // Provide the onboard SD card to the host as a USB mass storage device
+// #define USB_SD_ONBOARD        // Provide the onboard SD card to the host as a USB mass storage device
 
 
 
-//#define LPC_SD_LCD          // Marlin uses the SD drive attached to the LCD
-#define LPC_SD_ONBOARD        // Marlin uses the SD drive attached to the control board
+// #define LPC_SD_LCD          // Marlin uses the SD drive attached to the LCD
+// #define LPC_SD_ONBOARD        // Marlin uses the SD drive attached to the control board
 
-#if ENABLED(LPC_SD_LCD)
+// #if ENABLED(LPC_SD_LCD)
+
+//   #define SCK_PIN          P0_07
+//   #define MISO_PIN         P0_08
+//   #define MOSI_PIN         P0_09
+//   #define SS_PIN           P0_28   // Chip select for SD card used by Marlin
+//   #define ONBOARD_SD_CS    P0_06   // Chip select for "System" SD card
+
+// #elif ENABLED(LPC_SD_ONBOARD)
+
+//   // The external SD card is not used. Hardware SPI is used to access the card.
+//   #if ENABLED(USB_SD_ONBOARD)
+//     // When sharing the SD card with a PC we want the menu options to
+//     // mount/unmount the card and refresh it. So we disable card detect.
+//     #define SHARED_SD_CARD
+//   #else
+//     #define SD_DETECT_PIN  P0_27
+//   #endif
+//   #define SCK_PIN          P0_07
+//   #define MISO_PIN         P0_08
+//   #define MOSI_PIN         P0_09
+//   #define SS_PIN           P0_06   // Chip select for SD card used by Marlin
+//   #define ONBOARD_SD_CS    P0_06   // Chip select for "System" SD card
+
+// #endif
+
+//****************************************************************
+//*** OLD DISPLAY SETTING - END
+//****************************************************************
+
+//****************************************************************
+//*** NEW DISPLAY SETTING - BEGIN
+//****************************************************************
+
+#if SD_CONNECTION_IS(LCD) || SD_CONNECTION_IS(ONBOARD)
 
   #define SCK_PIN          P0_07
   #define MISO_PIN         P0_08
@@ -168,23 +185,20 @@
   #define SS_PIN           P0_28   // Chip select for SD card used by Marlin
   #define ONBOARD_SD_CS    P0_06   // Chip select for "System" SD card
 
-#elif ENABLED(LPC_SD_ONBOARD)
-
-  // The external SD card is not used. Hardware SPI is used to access the card.
-  #if ENABLED(USB_SD_ONBOARD)
-    // When sharing the SD card with a PC we want the menu options to
-    // mount/unmount the card and refresh it. So we disable card detect.
+  #if SD_CONNECTION_IS(ONBOARD)
     #define SHARED_SD_CARD
   #else
     #define SD_DETECT_PIN  P0_27
   #endif
-  #define SCK_PIN          P0_07
-  #define MISO_PIN         P0_08
-  #define MOSI_PIN         P0_09
-  #define SS_PIN           P0_06   // Chip select for SD card used by Marlin
-  #define ONBOARD_SD_CS    P0_06   // Chip select for "System" SD card
 
 #endif
+
+
+//****************************************************************
+//*** NEW DISPLAY SETTING - END
+//****************************************************************
+
+
 
 /**
  * Smart LCD adapter
