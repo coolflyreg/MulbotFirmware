@@ -380,7 +380,7 @@
   #define CASE_LIGHT_PIN 8
   #define CASE_LIGHT_DEFAULT_BRIGHTNESS 105   // Set default power-up brightness (0-255, requires PWM pin)
 #else 
-  #define CASE_LIGHT_PIN 8                  // Override the default pin if needed
+  #define CASE_LIGHT_PIN 45                  // Override the default pin if needed
   #define CASE_LIGHT_DEFAULT_BRIGHTNESS 105   // Set default power-up brightness (0-255, requires PWM pin)
 #endif
   #define INVERT_CASE_LIGHT false             // Set true if Case Light is ON when pin is LOW
@@ -1434,12 +1434,12 @@
   #endif
   #define RETRACT_LENGTH 4                // Default retract length (positive mm)
   #define RETRACT_LENGTH_SWAP 4          // Default swap retract length (positive mm), for extruder change
-  #define RETRACT_FEEDRATE 25             // Default feedrate for retracting (mm/s)
+  #define RETRACT_FEEDRATE 16             // Default feedrate for retracting (mm/s)
   #define RETRACT_ZRAISE 1                // Default retract Z-raise (mm)
   #define RETRACT_RECOVER_LENGTH 0        // Default additional recover length (mm, added to retract length when recovering)
   #define RETRACT_RECOVER_LENGTH_SWAP 1   // Default additional swap recover length (mm, added to retract length when recovering from extruder change)
-  #define RETRACT_RECOVER_FEEDRATE 20      // Default feedrate for recovering from retraction (mm/s)
-  #define RETRACT_RECOVER_FEEDRATE_SWAP 20 // Default feedrate for recovering from swap retraction (mm/s)
+  #define RETRACT_RECOVER_FEEDRATE 15      // Default feedrate for recovering from retraction (mm/s)
+  #define RETRACT_RECOVER_FEEDRATE_SWAP 15 // Default feedrate for recovering from swap retraction (mm/s)
   #if ENABLED(MIXING_EXTRUDER)
     #define RETRACT_SYNC_MIXING         // Retract and restore all mixing steppers simultaneously
   #endif
